@@ -1,5 +1,12 @@
 Revision history for HTML-Tree-Create-Callback
 
+0.03    2016-04-01 (PERLANCAR)
+
+	- [Bugfix] Fix algorithm in Callback::ChildrenPerLevel.
+
+	- Fix sample output.
+
+
 0.002   2016-03-31 (PERLANCAR)
 
         - Add module: HTML::Tree::Create::Callback::ChildrenPerLevel.
