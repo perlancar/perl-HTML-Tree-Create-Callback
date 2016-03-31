@@ -139,8 +139,8 @@ The C<$num_children> will be calculated by this function to satisfy total number
 of children per level specified in C<\@num_children_per_level>. So suppose
 C<\@num_children_per_level> is C<[10, 50, 25]>, then the root element will have
 10 child elements, and each child element will have 50/10 = 5 children of their
-own, but only one out of two each of these children will have a child because
-the number of children at the 3rd level is only 25 (half of 50).
+own, but only one out of two of these children will have a child because the
+number of children at the third level is only 25 (half of 50).
 
 Specifying total number of children per level is sometimes more convenient than
 specifying number of children per node.
