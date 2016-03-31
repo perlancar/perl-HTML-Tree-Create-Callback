@@ -89,28 +89,12 @@ Sample result:
        text3.0
        text4
      </span>
-     <span class="foo1" id="4">
-       text3.1
-       text4
-     </span>
+   </p>
+   <p id="4">
    </p>
    <p id="5">
      <span class="foo0" id="6">
        text3.0
-       text4
-     </span>
-     <span class="foo1" id="7">
-       text3.1
-       text4
-     </span>
-   </p>
-   <p id="8">
-     <span class="foo0" id="9">
-       text3.0
-       text4
-     </span>
-     <span class="foo1" id="10">
-       text3.1
        text4
      </span>
    </p>
