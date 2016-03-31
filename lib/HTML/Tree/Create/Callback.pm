@@ -150,3 +150,5 @@ To stop the tree from growing, at the last level you want you should put 0 to
 the number of children.
 
 =head1 SEE ALSO
+
+The interface of this module is modeled after L<Tree::Create::Callback>.
