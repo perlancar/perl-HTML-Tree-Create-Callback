@@ -31,9 +31,13 @@ my $tree;
                     'text3.'.$seniority,
                     'text4',
                 );
+            } elsif ($level == 3) {
+                return (
+                    'span', {id=>$id, class=>"bar".$seniority},
+                );
             }
         },
-        [3, 2],
+        [3, 2, 3],
     );
 }
 
@@ -43,14 +47,20 @@ my $exp_tree = <<'_';
   <p id="2">
     <span class="foo0" id="3">
       text3.0
+      <span class="bar0" id="4">
+      </span>
+      <span class="bar1" id="5">
+      </span>
       text4
     </span>
   </p>
-  <p id="4">
+  <p id="6">
   </p>
-  <p id="5">
-    <span class="foo0" id="6">
+  <p id="7">
+    <span class="foo0" id="8">
       text3.0
+      <span class="bar0" id="9">
+      </span>
       text4
     </span>
   </p>
