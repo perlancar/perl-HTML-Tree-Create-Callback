@@ -1,4 +1,4 @@
-package HTML::Tree::Create::Callback::ElemsPerLevel;
+package HTML::Tree::Create::Callback::ChildrenPerLevel;
 
 # DATE
 # VERSION
@@ -14,7 +14,7 @@ use Exporter qw(import);
 our @EXPORT_OK = qw(create_html_tree_using_callback);
 
 sub create_html_tree_using_callback {
-    my ($callback, $num_elems_per_level) = @_;
+    my ($callback, $num_children_per_level) = @_;
 
     my $num_children_per_level_so_far = [];
 
@@ -25,17 +25,17 @@ sub create_html_tree_using_callback {
             my ($element, $attrs, $text_before, $text_after) =
                 $callback->($level, $seniority);
             my $num_children;
-            if ($level >= @$num_elems_per_level) {
+            if ($level >= @$num_children_per_level) {
                 $num_children = 0;
             } elsif ($level == 0) {
-                $num_children = $num_elems_per_level->[0];
+                $num_children = $num_children_per_level->[0];
             } else {
 
                 # at this point we must already have this number of children
                 my $target = sprintf("%.0f",
                                      ($seniority+1) *
-                                         ($num_elems_per_level->[$level] /
-                                          $num_elems_per_level->[$level-1]));
+                                         ($num_children_per_level->[$level] /
+                                          $num_children_per_level->[$level-1]));
 
                 # we have this number of children so far
                 $num_children_per_level_so_far->[$level] //= 0;
@@ -123,7 +123,7 @@ Sample result:
 
 =head1 FUNCTIONS
 
-=head2 create_html_tree_using_callback($cb, \@num_elems_per_level) => str
+=head2 create_html_tree_using_callback($cb, \@num_children_per_level) => str
 
 This is like L<HTML::Tree::Create::Callback>'s
 C<create_html_tree_using_callback> (in fact, it's implemented as a thin wrapper
@@ -136,14 +136,17 @@ but only:
  ($element, \%attrs, $text_before, $text_after)
 
 The C<$num_children> will be calculated by this function to satisfy total number
-of elements per level specified in C<\@num_elems_per_level>. So suppose
-C<\@num_elems_per_level> is C<[10, 50, 25]>, then the root element will have 10
-child elements, and each child element will have 50/10 = 5 children of their
+of children per level specified in C<\@num_children_per_level>. So suppose
+C<\@num_children_per_level> is C<[10, 50, 25]>, then the root element will have
+10 child elements, and each child element will have 50/10 = 5 children of their
 own, but only one out of two each of these children will have a child because
 the number of children at the 3rd level is only 25 (half of 50).
+
+Specifying total number of children per level is sometimes more convenient than
+specifying number of children per node.
 
 
 =head1 SEE ALSO
 
 The interface of this module is modeled after
-L<Tree::Create::Callback::NodesPerLevel>.
+L<Tree::Create::Callback::ChildrenPerLevel>.
